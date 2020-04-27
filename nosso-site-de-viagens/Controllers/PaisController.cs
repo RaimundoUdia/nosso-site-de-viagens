@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage;
 using nosso_site_de_viagens.Data;
 using nosso_site_de_viagens.Models;
+using nosso_site_de_viagens.ViewModel;
 
 namespace nosso_site_de_viagens.Controllers
 {
@@ -23,12 +24,16 @@ namespace nosso_site_de_viagens.Controllers
 
         // POST: api/Pais
         [HttpPost]
-        public async Task<ActionResult<Pais>> Post(Pais model)
+        public async Task<IActionResult> Create(PaisViewModel paisViewModel)
         {
-            _context.Pais.Add(model);
+            Pais NewPais = new Pais
+            {
+                Nome = paisViewModel.Nome
+            };
+            _context.Add(NewPais);
             await _context.SaveChangesAsync();
-            return Ok(model);
-
+            return Ok();
+           
         }
 
     }

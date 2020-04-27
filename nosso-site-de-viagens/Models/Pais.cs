@@ -7,7 +7,7 @@ namespace nosso_site_de_viagens.Models
         [Key]
         public int Id { get; set; }
 
-        [Required(ErrorMessage = "O nome é obrigatório")]
+        [Required]
         public string Nome { get; set; }
     }
 }
