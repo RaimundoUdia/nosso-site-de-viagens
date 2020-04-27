@@ -10,7 +10,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.OpenApi.Models;
 using nosso_site_de_viagens.Data;
+using Swashbuckle.AspNetCore.Swagger;
 
 namespace nosso_site_de_viagens
 {
@@ -31,12 +33,34 @@ namespace nosso_site_de_viagens
                     options => options.UseSqlServer(
                         Configuration.GetConnectionString("BaseSiteViagens")));
 
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo
+                {
+                    Version = "v1",
+                    Title = "Swegger Nosso site de Viagens",
+                    Contact = new OpenApiContact
+                    {
+                        Name = "Raimundo",
+                        Email = "raimundo.junior@zup.com.br"
+                    }
+
+                });
+            });
+
             services.AddControllers();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            app.UseSwagger();
+
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Swegger Nosso site de Viagens");
+            });
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
