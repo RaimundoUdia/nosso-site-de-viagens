@@ -4,43 +4,32 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Storage;
+using nosso_site_de_viagens.Data;
+using nosso_site_de_viagens.Models;
 
 namespace nosso_site_de_viagens.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/Pais")]
     [ApiController]
     public class PaisController : ControllerBase
     {
-        // GET: api/Pais
-        [HttpGet]
-        public IEnumerable<string> Get()
+        private readonly DataContext _context;
+        public PaisController(DataContext context)
         {
-            return new string[] { "value1", "value2" };
-        }
-
-        // GET: api/Pais/5
-        [HttpGet("{id}", Name = "Get")]
-        public string Get(int id)
-        {
-            return "value";
+            _context = context;
         }
 
         // POST: api/Pais
         [HttpPost]
-        public void Post([FromBody] string value)
+        public async Task<ActionResult<Pais>> Post(Pais model)
         {
+            _context.Pais.Add(model);
+            await _context.SaveChangesAsync();
+            return Ok(model);
+
         }
 
-        // PUT: api/Pais/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE: api/ApiWithActions/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }
     }
 }

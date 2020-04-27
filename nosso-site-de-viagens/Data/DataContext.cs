@@ -14,6 +14,6 @@ namespace nosso_site_de_viagens.Data
         {
 
         }
-        public DbSet<Pais> Paises { get; set; }
+        public DbSet<Pais> Pais { get; set; }
     }
 }
