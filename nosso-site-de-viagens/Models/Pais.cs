@@ -8,6 +8,11 @@ namespace nosso_site_de_viagens.Models
         public int Id { get; set; }
 
         [Required]
-        public string Nome { get; set; }
+        public string Nome { get; private set; }
+
+        public Pais(string nome)
+        {
+            Nome = nome;
+        }
     }
 }

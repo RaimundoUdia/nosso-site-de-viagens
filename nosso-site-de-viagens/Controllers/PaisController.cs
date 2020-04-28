@@ -26,10 +26,8 @@ namespace nosso_site_de_viagens.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(PaisViewModel paisViewModel)
         {
-            Pais NewPais = new Pais
-            {
-                Nome = paisViewModel.Nome
-            };
+            Pais NewPais = new Pais(paisViewModel.Nome);
+            
             _context.Add(NewPais);
             await _context.SaveChangesAsync();
             return Ok();
