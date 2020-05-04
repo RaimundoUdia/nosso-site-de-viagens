@@ -23,11 +23,11 @@ namespace nosso_site_de_viagens.Models
 
         public Pais Pais { get; set; }
 
-        public Companhia(string nome, int paisid, DateTime dataCriacao)
+        public Companhia(string nome, int paisid)
         {
             Nome = nome;
             PaisId = paisid;
-            DataCriacao = dataCriacao;
+            DataCriacao = DateTime.Now;
         }
 
         public Companhia()

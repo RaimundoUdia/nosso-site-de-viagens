@@ -24,7 +24,7 @@ namespace nosso_site_de_viagens.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(CompanhiaViewModel companhiaViewModel)
         { 
-            Companhia NewCompanhia = new Companhia(companhiaViewModel.Nome, companhiaViewModel.PaisId, DateTime.Now);
+            Companhia NewCompanhia = new Companhia(companhiaViewModel.Nome, companhiaViewModel.PaisId);
             var existeNome = (from u in _context.Companhia
                                where u.Nome == companhiaViewModel.Nome
                                select u).FirstOrDefault();
