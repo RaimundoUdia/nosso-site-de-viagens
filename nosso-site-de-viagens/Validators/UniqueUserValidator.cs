@@ -12,11 +12,11 @@ namespace nosso_site_de_viagens.Validators
 {
     public class UniqueUserValidator: ValidationAttribute
     {
-        private DataContext _context;
        
-
         protected override ValidationResult IsValid(object value, ValidationContext validationContext)
         {
+             DataContext _context;
+
             _context = validationContext.GetService<DataContext>();
 
             bool result = _context.Companhia.Where(u => u.Nome == value.ToString()).Any();

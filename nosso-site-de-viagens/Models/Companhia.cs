@@ -30,7 +30,7 @@ namespace nosso_site_de_viagens.Models
             Nome = nome;
             PaisId = paisid;
             DataCriacao = DateTime.Now;
-            Pais = this.Pais;
+          
         }
 
         public Companhia()

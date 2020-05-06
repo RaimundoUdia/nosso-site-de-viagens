@@ -25,17 +25,10 @@ namespace nosso_site_de_viagens.Controllers
         public async Task<IActionResult> Create(CompanhiaViewModel companhiaViewModel)
         { 
             Companhia NewCompanhia = new Companhia(companhiaViewModel.Nome, companhiaViewModel.PaisId);
-            //var existeNome = (from u in _context.Companhia
-            //                   where u.Nome == companhiaViewModel.Nome
-            //                   select u).FirstOrDefault();
-            //if (existeNome == null)
-            //{
                 _context.Add(NewCompanhia);
                 await _context.SaveChangesAsync();
                 return Ok("Companhia criada");
-            //}
-
-            //return BadRequest("Nome da companhia não ser duplicado");
+            
         }
 
     }
