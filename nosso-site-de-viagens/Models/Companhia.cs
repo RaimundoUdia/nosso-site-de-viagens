@@ -1,4 +1,5 @@
-﻿using System;
+﻿using nosso_site_de_viagens.Validators;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -17,6 +18,7 @@ namespace nosso_site_de_viagens.Models
         public int PaisId { get; private set; }
 
         [Required]
+        
         public string Nome { get; private set; }
 
         public DateTime DataCriacao { get; set; }
