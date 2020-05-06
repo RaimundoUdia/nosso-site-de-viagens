@@ -16,7 +16,6 @@ namespace nosso_site_de_viagens.ViewModel
 
         [Required(ErrorMessage = "Pais é Obrigatório")]
         public int PaisId { get; set; }
-
         
     }
 }
